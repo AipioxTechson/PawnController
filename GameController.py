@@ -24,6 +24,10 @@ def generateGrid(size,player_one_t,player_two_t):
 
 
 total,gamemode = 0,0
+player1, player2 = None, None
+Token1, Token2 = "X", "Y"
+
+#Asks for Input
 print("Welcome to nPawn!")
 print("How many Pawns?")
 try:
@@ -43,8 +47,17 @@ except ValueError:
 if gamemode < 0 or gamemode >= 3:
     gamemode = 1
     
+
+grid,p1_pieces,p2_pieces = generateGrid(total,Token1,Token2)
+
+#Sets up Gamemode
+if gamemode == 1:
+    player1 = HumanPlayer(Token1,p1_pieces,grid)
+    player2 = HumanPlayer(Token2,p2_pieces,grid)
+else:
+    player1 = HumanPlayer(Token1,p1_pieces,grid)
+    player2 = ComputerPlayer(Token2,p2_pieces,grid)
     
-player1, player2 = None, None
-grid,p1_pieces,p2_pieces = generateGrid(total,"X","Y")
+#Main Game
 s = Game(player1,player2,grid)
 s.printState()
