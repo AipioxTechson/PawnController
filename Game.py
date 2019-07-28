@@ -1,6 +1,10 @@
 class Game:
     """Responsible for holding the state of the Game.
-    
+    Variables:
+    grid
+    turn
+    player_one
+    player_two
     Functions:
     isWin()
     nextMove()
@@ -21,7 +25,36 @@ class Game:
         pass
     
     def printState(self):
-        pass
+        s = ' '
+        for row in range(len(self.grid)):
+            s = s + " " + str(row)
+        print(s)
+        for row in range(len(self.grid)):
+            s = str(row)
+            for column in self.grid[row]:
+                s = s +"|" + column.getToken()
+            print(s)
                 
             
+class Piece:
+    '''Responsible for holding the data about a single Piece in the game.
+    Variables:
+    x
+    y
+    Token
+    Functions:
+    getPosition()
+    getToken()
+    '''
+    def __init__(self,x,y,Token):
+        self.x = x
+        self.y = y
+        self.Token = Token
+    
+    def getPosition(self):
+        return (x,y)
+    
+    def getToken(self):
+        return self.Token
+    
         
