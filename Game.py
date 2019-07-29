@@ -45,10 +45,18 @@ class Game:
         return False
     
     def nextMove(self):
-        pass
+        if self.turn % 2 == 0:
+            self.turn = 1
+            return self.player_one.nextMove()
+        self.turn = 0
+        return self.player_two.nextMove()
     
     def ApplyMove(self,Move,player):
-        pass
+        fromX,fromY = Move.fromSpot
+        toX,toY = Move.toSpot
+        self.grid[toX][toY] = self.grid[fromX][fromY]
+        self.grid[fromX][fromY] = Piece(fromX,fromY," ")
+        print(player.getToken() +" moved to: " + "("+str(toX)+","+str(toY)+")")
     
     def printState(self):
         s = ' '
@@ -81,7 +89,7 @@ class Piece:
         self.dead = False
     
     def getPosition(self):
-        return (x,y)
+        return (self.x,self.y)
     
     def getToken(self):
         return self.Token
@@ -101,5 +109,8 @@ class Move:
     def __init__(self,fromSpot,toSpot):
         self.fromSpot = fromSpot
         self.toSpot = toSpot
+        
+    def __eq__(self,other):
+        return self.fromSpot == other.fromSpot and self.toSpot == other.toSpot
         
         

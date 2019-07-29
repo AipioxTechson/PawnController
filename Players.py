@@ -1,10 +1,12 @@
+import re
+from Game import Move
 class Player:
     '''Responsible for creating the Abstract Player
     Variables:
     Token
     pieces
     grid
-    playerNumber
+    player_number
     Functions:
     getToken()
     getPieces()
@@ -27,7 +29,16 @@ class Player:
     
     def getAvailableMoves(self,Piece):
         #TODO:Finish function
-        return []
+        totalMovelist = []
+        FromSpot = Piece.getPosition()
+        if self.player_number == 1:
+            #Checking Forward TODO: Add checking diagonally
+            if self.grid[FromSpot[0]+1][FromSpot[1]].getToken() == " ":
+                totalMovelist.append(Move(FromSpot,(FromSpot[0]+1,FromSpot[1])))
+        else:
+            if self.grid[FromSpot[0]-1][FromSpot[1]].getToken() == " ":
+                totalMovelist.append(Move(FromSpot,(FromSpot[0]-1,FromSpot[1])))            
+        return totalMovelist
     
     def nextMove(self):
         pass
@@ -51,6 +62,18 @@ class HumanPlayer(Player):
             print("Congrats! " + self.Token + " wins!")
         else:
             print("Sorry! " + self.Token + " lost!")
+            
+            
+    def isValidIndex(self,results,grid):
+        resultX = int(results[0])
+        resultY = int(results[1])
+        return resultX >= 0 and resultX < len(grid) and resultY >= 0 and resultY < len(grid)
+    
+    def nextMove(self):
+        pass
+                
+                
+            
         
         
 class ComputerPlayer(Player):
