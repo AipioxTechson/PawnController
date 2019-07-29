@@ -9,7 +9,7 @@ class Game:
     isWin()
     nextMove()
     printState()
-    
+    ApplyMove()
     """
 
     def __init__(self,player1: "Player" ,player2: "Player", grid = []):
@@ -19,9 +19,35 @@ class Game:
         self.player_two = player2
     
     def isWin(self):
-        pass
+        isWinner = False
+        player1Winner = True
+        #Check for Winner: Player1
+        for piece in self.grid[len(self.grid)-1]:
+            if piece.getToken() == self.player_one.getToken():
+                player1Winner = True
+                isWinner = True
+                
+        #Check for Winner: Player2
+        for piece in self.grid[0]:
+            if piece.getToken() == self.player_two.getToken():
+                player1Winner = False
+                isWinner = True        
+        
+        #Check for Stalemate
+        if all([1 if self.player_one.getAvailableMoves(piece) == [] else 0 for piece in self.player_one.getPieces()]):
+            isWinner = True
+            player1Winner = self.turn % 2 == 0
+            
+        if isWinner:
+            self.player_one.processData(player1Winner)
+            self.player_two.processData(not player1Winner)
+            return True
+        return False
     
     def nextMove(self):
+        pass
+    
+    def ApplyMove(self,Move,player):
         pass
     
     def printState(self):
@@ -42,14 +68,17 @@ class Piece:
     x
     y
     Token
+    dead
     Functions:
     getPosition()
     getToken()
+    isDead()
     '''
     def __init__(self,x,y,Token):
         self.x = x
         self.y = y
         self.Token = Token
+        self.dead = False
     
     def getPosition(self):
         return (x,y)
@@ -57,4 +86,20 @@ class Piece:
     def getToken(self):
         return self.Token
     
+    def isDead(self):
+        return self.dead
+    
+    
+    
+class Move:
+    '''Responsible for storing the data about a single move in the game
+    Variables:
+    fromSpot
+    to
+    
+    '''
+    def __init__(self,fromSpot,toSpot):
+        self.fromSpot = fromSpot
+        self.toSpot = toSpot
+        
         

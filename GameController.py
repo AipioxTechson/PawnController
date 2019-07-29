@@ -52,12 +52,20 @@ grid,p1_pieces,p2_pieces = generateGrid(total,Token1,Token2)
 
 #Sets up Gamemode
 if gamemode == 1:
-    player1 = HumanPlayer(Token1,p1_pieces,grid)
-    player2 = HumanPlayer(Token2,p2_pieces,grid)
+    player1 = HumanPlayer(Token1,p1_pieces,grid,1)
+    player2 = HumanPlayer(Token2,p2_pieces,grid,2)
 else:
-    player1 = HumanPlayer(Token1,p1_pieces,grid)
-    player2 = ComputerPlayer(Token2,p2_pieces,grid)
+    player1 = HumanPlayer(Token1,p1_pieces,grid,1)
+    player2 = ComputerPlayer(Token2,p2_pieces,grid,2)
     
 #Main Game
-s = Game(player1,player2,grid)
-s.printState()
+CurrentGame = Game(player1,player2,grid)
+while (not CurrentGame.isWin()):
+    CurrentGame.printState()
+    
+    newMove,player = CurrentGame.nextMove()
+    CurrentGame.ApplyMove(newMove,player)
+    
+    
+    
+    
