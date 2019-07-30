@@ -27,17 +27,33 @@ class Player:
     def getPieces(self):
         return self.pieces
     
+    def getMove(self,moveList,currentSpot,nextX,nextY,validToken):
+        if currentSpot[0] + nextX < len(self.grid) and currentSpot[1] + nextY < len(self.grid) and self.grid[currentSpot[0] + nextX][currentSpot[1] + nextY].getToken() == validToken:
+            moveList.append(Move(currentSpot,(currentSpot[0]+nextX,currentSpot[1]+nextY)))
+            
     def getAvailableMoves(self,Piece):
         #TODO:Finish function
         totalMovelist = []
         FromSpot = Piece.getPosition()
         if self.player_number == 1:
-            #Checking Forward TODO: Add checking diagonally
-            if self.grid[FromSpot[0]+1][FromSpot[1]].getToken() == " ":
-                totalMovelist.append(Move(FromSpot,(FromSpot[0]+1,FromSpot[1])))
+            #Checking Forward
+            self.getMove(totalMovelist,FromSpot,1,0," ")
+
+            #Checking right diagonally
+            self.getMove(totalMovelist,FromSpot,1,1,"Y")
+            
+            #Checking left diagonally
+            self.getMove(totalMovelist,FromSpot,1,-1,"Y")
         else:
-            if self.grid[FromSpot[0]-1][FromSpot[1]].getToken() == " ":
-                totalMovelist.append(Move(FromSpot,(FromSpot[0]-1,FromSpot[1])))            
+            #Checking Forward
+            self.getMove(totalMovelist,FromSpot,-1,0," ")
+            
+            #Checking right diagonally
+            self.getMove(totalMovelist,FromSpot,-1,-1,"X")
+            
+            #Checking left diagonally
+            self.getMove(totalMovelist,FromSpot,-1,1,"X")      
+        
         return totalMovelist
     
     def nextMove(self):
