@@ -221,18 +221,22 @@ class ComputerPlayer(Player):
         
         CurrentState = None
         if turnNumber in self.CurrentData:
-            CurrentState = self.getState()
+            CurrentState = self.getState(turnNumber)
         else:
             generateDefaultStates()
-            CurrentState = self.getState()
+            CurrentState = self.getState(turnNumber)
         
         previousState = CurrentState
         CurrentMove = CurrentState.getMove()
         previousMove = CurrentMove
         return CurrentMove
     
-    def getState(self):
-        pass
+    def getState(self,turnNumber):
+        currentState = State(self.grid)
+        for State in self.CurrentData[turnNumber]:
+            if State == currentState:
+                return State
+        return None
     
     def generateGrid(self,gridlength,compressionString):
         pass
