@@ -132,6 +132,13 @@ class ComputerPlayer(Player):
     Mode
     previousState
     CurrentData
+    
+    Functions:
+    AddMove()
+    RemoveMove()
+    saveData()
+    readData()
+    generateDefaultState()
     '''
     def __init__(self,Token,pieces,grid,player_number,mode):
         Player.__init__(self,Token,pieces,grid,player_number)
