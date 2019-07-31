@@ -38,13 +38,13 @@ except ValueError:
 if total < 2:
     total = 3
     
-print("What gamemode?: (1) PvP (2) PvC")
+print("What gamemode?: (1) PvP (2) PvC (3) CvC")
 try:
     gamemode = int(input())
 except ValueError:
     gamemode = 1
     
-if gamemode < 0 or gamemode >= 3:
+if gamemode < 0 or gamemode > 3:
     gamemode = 1
     
 
@@ -55,9 +55,12 @@ while playAgain:
     if gamemode == 1:
         player1 = HumanPlayer(Token1,p1_pieces,grid,1)
         player2 = HumanPlayer(Token2,p2_pieces,grid,2)
-    else:
+    elif gamemode == 2:
         player1 = HumanPlayer(Token1,p1_pieces,grid,1)
-        player2 = ComputerPlayer(Token2,p2_pieces,grid,2)
+        player2 = ComputerPlayer(Token2,p2_pieces,grid,2,"Addition")
+    else:
+        player1 = ComputerPlayer(Token1,p1_pieces,grid,1,"Addition")
+        player2 = ComputerPlayer(Token2,p2_pieces,grid,2,"Subtraction")
         
     #Main Game
     CurrentGame = Game(player1,player2,grid)

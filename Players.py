@@ -122,9 +122,21 @@ class HumanPlayer(Player):
 class ComputerPlayer(Player):
     '''Responsible for handling ComputerInput for Player
     Subclass to Player
+    3 Modes:
+    Addition - Adds another instance of the winning Move to the set when winning a game
+    Subtraction - Removes the instance of the losing Move from the set when losing a game
+    Mixed - Does both
+    
+    Variables:
+    Same as Player
+    Mode
+    previousState
+    CurrentData
     '''
-    def __init__(self,Token,pieces,grid,player_number):
+    def __init__(self,Token,pieces,grid,player_number,mode):
         Player.__init__(self,Token,pieces,grid,player_number)
+        self.Mode = mode
+        
         
         
     def processData(self,winValue):
