@@ -131,6 +131,7 @@ class ComputerPlayer(Player):
     Same as Player
     Mode
     previousState
+    previousMove
     CurrentData
     
     Functions:
@@ -147,7 +148,10 @@ class ComputerPlayer(Player):
         
         
     def processData(self,winValue):
-        print("LOL")
+        if winValue == True and (self.Mode == "Addition" or self.Mode == "Mixed"):
+            self.AddMove(previousState,previousMove)
+        elif winValue == False and (self.Mode == "Subtraction" or self.Mode == "Mixed"):
+            self.RemoveMove(previousState,previousMove)
         
     def nextMove(self):
         for piece in self.getPieces():
