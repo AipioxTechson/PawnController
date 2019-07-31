@@ -7,12 +7,14 @@ class Player:
     pieces
     grid
     player_number
+    
     Functions:
     getToken()
     getPieces()
     getAvailableMoves(Piece)
     nextMove()
     processData()
+    isValidIndex()
     
     '''
     def __init__(self,Token,pieces,grid,player_number):
@@ -28,7 +30,7 @@ class Player:
         return self.pieces
     
     def getMove(self,moveList,currentSpot,nextX,nextY,validToken):
-        if currentSpot[0] + nextX < len(self.grid) and currentSpot[1] + nextY < len(self.grid) and currentSpot[0] + nextX >= 0 and currentSpot[1] + nextY >= 0 and self.grid[currentSpot[0] + nextX][currentSpot[1] + nextY].getToken() == validToken:
+        if self.isValidIndex((currentSpot[0]+nextX,currentSpot[1]+nextY)) and self.grid[currentSpot[0] + nextX][currentSpot[1] + nextY].getToken() == validToken:
             moveList.append(Move(currentSpot,(currentSpot[0]+nextX,currentSpot[1]+nextY)))
             
     def getAvailableMoves(self,Piece):
@@ -55,6 +57,11 @@ class Player:
             self.getMove(totalMovelist,FromSpot,-1,1,"X")      
         
         return totalMovelist
+     
+    def isValidIndex(self,results):
+        resultX = int(results[0])
+        resultY = int(results[1])
+        return resultX >= 0 and resultX < len(self.grid) and resultY >= 0 and resultY < len(self.grid)   
     
     def nextMove(self):
         pass
@@ -80,11 +87,6 @@ class HumanPlayer(Player):
             print("Sorry! " + self.Token + " lost!")
             
             
-    def isValidIndex(self,results):
-        resultX = int(results[0])
-        resultY = int(results[1])
-        return resultX >= 0 and resultX < len(self.grid) and resultY >= 0 and resultY < len(self.grid)
-    
     def nextMove(self):
         toSpot, fromSpot, validInput = None, None, False
         print(self.getToken() + "'s turn")
@@ -92,8 +94,6 @@ class HumanPlayer(Player):
       
             #Asking for FromInput            
             fromInput = input("From (#,#):")
-            if fromInput == "exit":
-                exit()
             matches = re.findall("\d+",fromInput)
             if len(matches) == 2:
                     fromSpot = (int(matches[0]),int(matches[1]))
@@ -125,3 +125,12 @@ class ComputerPlayer(Player):
     '''
     def __init__(self,Token,pieces,grid,player_number):
         Player.__init__(self,Token,pieces,grid,player_number)
+        
+        
+    def processData(self,winValue):
+        print("LOL")
+        
+    def nextMove(self):
+        for piece in self.getPieces():
+            for move in self.getAvailableMoves(piece):
+                return move,self
