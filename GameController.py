@@ -65,6 +65,7 @@ while (not CurrentGame.isWin()):
     
     newMove,player = CurrentGame.nextMove()
     CurrentGame.ApplyMove(newMove,player)
+        
     
     
     

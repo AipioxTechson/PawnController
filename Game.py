@@ -21,6 +21,16 @@ class Game:
     def isWin(self):
         isWinner = False
         player1Winner = True
+        #Checking if Player1 pieces are all dead
+        if len(self.player_one.getPieces()) == 0:
+            player1Winner = False
+            isWinner = True
+        
+        #Checking if player2 pieces are all dead
+        if len(self.player_two.getPieces()) == 0:
+            player1Winner = True
+            isWinner = True
+            
         #Check for Winner: Player1
         for piece in self.grid[len(self.grid)-1]:
             if piece.getToken() == self.player_one.getToken():
@@ -34,10 +44,11 @@ class Game:
                 isWinner = True        
         
         #Check for Stalemate
-        if all([1 if self.player_one.getAvailableMoves(piece) == [] else 0 for piece in self.player_one.getPieces()]):
-            isWinner = True
-            player1Winner = self.turn % 2 == 0
-            
+        for piece in self.player_one.getPieces():
+            if all([1 if self.player_one.getAvailableMoves(piece) == [] else 0 for piece in self.player_one.getPieces()]):
+                isWinner = True
+                player1Winner = self.turn % 2 != 0
+                
         if isWinner:
             self.player_one.processData(player1Winner)
             self.player_two.processData(not player1Winner)
@@ -54,8 +65,14 @@ class Game:
     def ApplyMove(self,Move,player):
         fromX,fromY = Move.fromSpot
         toX,toY = Move.toSpot
+        if self.grid[toX][toY].getToken() != " " and self.grid[toX][toY].getToken() != player.getToken():
+            if player.getToken() == "X":
+                self.player_two.getPieces().remove(self.grid[toX][toY])
+            else:
+                self.player_one.getPieces().remove(self.grid[toX][toY])
         self.grid[toX][toY] = self.grid[fromX][fromY]
         self.grid[fromX][fromY] = Piece(fromX,fromY," ")
+        self.grid[toX][toY].updatePosition(toX,toY)
         print(player.getToken() +" moved to: " + "("+str(toX)+","+str(toY)+")")
     
     def printState(self):
@@ -76,11 +93,9 @@ class Piece:
     x
     y
     Token
-    dead
     Functions:
     getPosition()
     getToken()
-    isDead()
     '''
     def __init__(self,x,y,Token):
         self.x = x
@@ -93,10 +108,13 @@ class Piece:
     
     def getToken(self):
         return self.Token
+        
+    def __eq__(self,other):
+        return self.x == other.x and self.y == other.y and self.getToken() == other.getToken()
     
-    def isDead(self):
-        return self.dead
-    
+    def updatePosition(self,x,y):
+        self.x = x
+        self.y = y
     
     
 class Move:

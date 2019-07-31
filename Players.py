@@ -28,7 +28,7 @@ class Player:
         return self.pieces
     
     def getMove(self,moveList,currentSpot,nextX,nextY,validToken):
-        if currentSpot[0] + nextX < len(self.grid) and currentSpot[1] + nextY < len(self.grid) and self.grid[currentSpot[0] + nextX][currentSpot[1] + nextY].getToken() == validToken:
+        if currentSpot[0] + nextX < len(self.grid) and currentSpot[1] + nextY < len(self.grid) and currentSpot[0] + nextX >= 0 and currentSpot[1] + nextY >= 0 and self.grid[currentSpot[0] + nextX][currentSpot[1] + nextY].getToken() == validToken:
             moveList.append(Move(currentSpot,(currentSpot[0]+nextX,currentSpot[1]+nextY)))
             
     def getAvailableMoves(self,Piece):
@@ -80,13 +80,40 @@ class HumanPlayer(Player):
             print("Sorry! " + self.Token + " lost!")
             
             
-    def isValidIndex(self,results,grid):
+    def isValidIndex(self,results):
         resultX = int(results[0])
         resultY = int(results[1])
-        return resultX >= 0 and resultX < len(grid) and resultY >= 0 and resultY < len(grid)
+        return resultX >= 0 and resultX < len(self.grid) and resultY >= 0 and resultY < len(self.grid)
     
     def nextMove(self):
-        pass
+        toSpot, fromSpot, validInput = None, None, False
+        print(self.getToken() + "'s turn")
+        while (not validInput):
+      
+            #Asking for FromInput            
+            fromInput = input("From (#,#):")
+            if fromInput == "exit":
+                exit()
+            matches = re.findall("\d+",fromInput)
+            if len(matches) == 2:
+                    fromSpot = (int(matches[0]),int(matches[1]))
+            
+            #Asking for ToInput
+            toInput = input("To (#,#):")
+            matches = re.findall("\d+",toInput)
+            if len(matches) == 2:
+                toSpot = (int(matches[0]),int(matches[1]))
+            
+            #Checking if it's a valid token
+            if fromSpot != None and toSpot != None and len(fromSpot) == 2 and len(toSpot) == 2 and self.isValidIndex(fromSpot) and self.grid[fromSpot[0]][fromSpot[1]].getToken() == self.getToken():
+                if Move(fromSpot,toSpot) in self.getAvailableMoves(self.grid[fromSpot[0]][fromSpot[1]]):
+                    return Move(fromSpot,toSpot), self
+                else:
+                    print("Not a valid Move!")
+            else:
+                print("Not a valid Position!")
+        
+        
                 
                 
             
