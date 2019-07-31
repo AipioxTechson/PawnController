@@ -23,8 +23,8 @@ def generateGrid(size,player_one_t,player_two_t):
 
 
 
-total,gamemode = 0,0
-player1, player2 = None, None
+total,gamemode, playAgain = 0,0, True
+player1, player2, player1Score, player2Score = None, None, 0,0
 Token1, Token2 = "X", "Y"
 
 #Asks for Input
@@ -48,25 +48,40 @@ if gamemode < 0 or gamemode >= 3:
     gamemode = 1
     
 
-grid,p1_pieces,p2_pieces = generateGrid(total,Token1,Token2)
-
-#Sets up Gamemode
-if gamemode == 1:
-    player1 = HumanPlayer(Token1,p1_pieces,grid,1)
-    player2 = HumanPlayer(Token2,p2_pieces,grid,2)
-else:
-    player1 = HumanPlayer(Token1,p1_pieces,grid,1)
-    player2 = ComputerPlayer(Token2,p2_pieces,grid,2)
+while playAgain:
+    grid,p1_pieces,p2_pieces = generateGrid(total,Token1,Token2)
     
-#Main Game
-CurrentGame = Game(player1,player2,grid)
-while (not CurrentGame.isWin()):
-    CurrentGame.printState()
-    
-    newMove,player = CurrentGame.nextMove()
-    CurrentGame.ApplyMove(newMove,player)
+    #Sets up Gamemode
+    if gamemode == 1:
+        player1 = HumanPlayer(Token1,p1_pieces,grid,1)
+        player2 = HumanPlayer(Token2,p2_pieces,grid,2)
+    else:
+        player1 = HumanPlayer(Token1,p1_pieces,grid,1)
+        player2 = ComputerPlayer(Token2,p2_pieces,grid,2)
         
+    #Main Game
+    CurrentGame = Game(player1,player2,grid)
+    while (not CurrentGame.isWin()):
+        CurrentGame.printState()
+        
+        newMove,player = CurrentGame.nextMove()
+        CurrentGame.ApplyMove(newMove,player)
     
+    if CurrentGame.getWinner().player_number == 1:
+        player1Score += 1
+    else:
+        player2Score += 1
+        
+    print("Current Score: "+" X: "+str(player1Score) +" Y: " + str(player2Score))
+    validInput = False
+    while not validInput:
+        print("Do you want to play again? Y/N")
+        againInput = input()
+        if againInput == "Y":
+            validInput = True
+            playAgain = True
+        elif againInput == "N":
+            validInput = True
+            playAgain = False
     
-    
-    
+        

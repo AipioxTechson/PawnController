@@ -5,11 +5,13 @@ class Game:
     turn
     player_one
     player_two
+    winner
     Functions:
     isWin()
     nextMove()
     printState()
     ApplyMove()
+    getWinner()
     """
 
     def __init__(self,player1: "Player" ,player2: "Player", grid = []):
@@ -50,6 +52,7 @@ class Game:
                 player1Winner = self.turn % 2 != 0
                 
         if isWinner:
+            self.winner = self.player_one if player1Winner else self.player_two
             self.player_one.processData(player1Winner)
             self.player_two.processData(not player1Winner)
             return True
@@ -86,6 +89,8 @@ class Game:
                 s = s +"|" + column.getToken()
             print(s)
                 
+    def getWinner(self):
+        return self.winner
             
 class Piece:
     '''Responsible for holding the data about a single Piece in the game.
