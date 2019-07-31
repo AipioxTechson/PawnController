@@ -59,11 +59,10 @@ class Game:
         return False
     
     def nextMove(self):
-        if self.turn % 2 == 0:
-            self.turn = 1
-            return self.player_one.nextMove()
-        self.turn = 0
-        return self.player_two.nextMove()
+        self.turn += 1
+        if self.turn % 2 != 0:
+            return self.player_one.nextMove(self.turn)
+        return self.player_two.nextMove(self.turn)
     
     def ApplyMove(self,Move,player):
         fromX,fromY = Move.fromSpot

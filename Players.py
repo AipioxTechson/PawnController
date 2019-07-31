@@ -87,9 +87,9 @@ class HumanPlayer(Player):
             print("Sorry! " + self.Token + " lost!")
             
             
-    def nextMove(self):
+    def nextMove(self,turnNumber):
         toSpot, fromSpot, validInput = None, None, False
-        print(self.getToken() + "'s turn")
+        print("Turn Number "+str(turnNumber)+", "+ self.getToken() + "'s turn")
         while (not validInput):
       
             #Asking for FromInput            
@@ -139,7 +139,8 @@ class ComputerPlayer(Player):
     RemoveMove()
     saveData()
     readData()
-    generateDefaultState()
+    generateDefaultStates()
+    getState()
     '''
     def __init__(self,Token,pieces,grid,player_number,mode):
         Player.__init__(self,Token,pieces,grid,player_number)
@@ -153,7 +154,17 @@ class ComputerPlayer(Player):
         elif winValue == False and (self.Mode == "Subtraction" or self.Mode == "Mixed"):
             self.RemoveMove(previousState,previousMove)
         
-    def nextMove(self):
-        for piece in self.getPieces():
-            for move in self.getAvailableMoves(piece):
-                return move,self
+    def nextMove(self,turnNumber):
+        print("Turn Number "+str(turnNumber)+", "+ self.getToken() + "'s turn")
+        
+        CurrentState = None
+        if turnNumber in self.CurrentData:
+            CurrentState = self.getState()
+        else:
+            generateDefaultStates()
+            CurrentState = self.getState()
+        
+        previousState = CurrentState
+        CurrentMove = CurrentState.getMove()
+        previousMove = CurrentMove
+        return CurrentMove
