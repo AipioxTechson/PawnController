@@ -1,5 +1,6 @@
 import re
 from Game import Move
+import random
 class Player:
     '''Responsible for creating the Abstract Player
     Variables:
@@ -141,6 +142,7 @@ class ComputerPlayer(Player):
     readData()
     generateDefaultStates()
     getState()
+    generateGrid()
     '''
     def __init__(self,Token,pieces,grid,player_number,mode):
         Player.__init__(self,Token,pieces,grid,player_number)
@@ -229,7 +231,11 @@ class ComputerPlayer(Player):
         previousMove = CurrentMove
         return CurrentMove
     
+    def getState(self):
+        pass
     
+    def generateGrid(self,gridlength,compressionString):
+        pass
     
 class State:
     '''Responsible for holding the configuration and Movelist for a given grid
@@ -240,5 +246,24 @@ class State:
     Functions:
     AddMove()
     RemoveMove()
-    
+    getMove()
     '''
+    def __init__(self,grid):
+        self.grid = grid
+        self.Movelist = []
+        
+    def AddMove(self,Move):
+        self.Movelist.append(Move)
+        
+    def RemoveMove(self,Move):
+        self.Movelist.remove(Move)
+        
+    def getMove(self):
+        return random.choice(self.Movelist)
+    
+    def __eq__(self,other):
+        for row in range(len(self.grid)):
+            for column in range(len(self.grid)):
+                if self.grid[row][column].getToken() != other.grid[row][column].getToken():
+                    return False
+        return True
