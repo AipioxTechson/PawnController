@@ -155,15 +155,17 @@ class ComputerPlayer(Player):
         NewData = {}
         currentState = 1
         currentIndex = 0
+        currentTurn = None
         #Patterns
-        EndPattern = re.compile("^END\n$")
+        EndPattern = re.compile("^END$")
         EndPattern2 = re.compile("^\tEND\n$")
         EndPattern3 = re.compile("^\t\tEND\n$")
         Pattern1 = re.compile("^Ai for "+mode+str(len(grid))+"\n$")
         Pattern2 = re.compile("^Turn (\d+):\n$")
         Pattern3 = re.compile("^\tState:([X,Y, ]{%d})\n$" % len(grid) * len(grid))
         Pattern4 = re.compile("^\t\tMove:(\d+,\d+) (\d+,\d+)\n$")
-        FileList = ReadFile.read()
+        
+        FileList = ReadFile.readlines()
         Error = False
         while currentIndex < len(FileList) and not Error:
             currentString = FileList[currentIndex]
@@ -175,17 +177,22 @@ class ComputerPlayer(Player):
                     Error = True
             elif currentState == 2:
                 #Turn Number
-                
                 #Matches Pattern2: Set Entry into NewData
-                
+                if bool(Pattern2.match(currentString)):
+                    NewData[Pattern2.match(currentString).group(1)] = {}
+                    currentTurn = Pattern2.match(currentString).group(1)
                 #Matches EndPattern: Add Data to File
+                if bool(EndPattern.match(currentString)):
+                    self.CurrentData = NewData
             elif currentState == 3:
+                pass
                 #State number
                 
                 #Matches Pattern3: Create New State
                 
                 #Matches EndPattern2: Revert back to State 2
             elif currentState == 4:
+                pass
                 #Move Number
                 
                 #Matches Pattern4: Add Move to Statelist
@@ -193,6 +200,9 @@ class ComputerPlayer(Player):
                 #Matches EndPattern3: Revert back to State 3
             else:
                 Error = True
+            currentIndex += 1
+        ReadFile.close()
+        print(self.CurrentData)
                 
         
         
