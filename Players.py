@@ -145,7 +145,55 @@ class ComputerPlayer(Player):
     def __init__(self,Token,pieces,grid,player_number,mode):
         Player.__init__(self,Token,pieces,grid,player_number)
         self.Mode = mode
+        self.previousState = None
+        self.previousMove = None
+        self.CurrentData = {}
+        self.readData(grid,mode)
         
+    def readData(self,grid,mode):
+        ReadFile = open(str(len(grid))+"data"+mode+".txt","r+")
+        NewData = {}
+        currentState = 1
+        currentIndex = 0
+        #Patterns
+        EndPattern = re.compile("^END\n$")
+        EndPattern2 = re.compile("^\tEND\n$")
+        EndPattern3 = re.compile("^\t\tEND\n$")
+        Pattern1 = re.compile("^Ai for "+mode+str(len(grid))+"\n$")
+        Pattern2 = re.compile("^Turn (\d+):\n$")
+        Pattern3 = re.compile("^\tState:([X,Y, ]{%d})\n$" % len(grid) * len(grid))
+        Pattern4 = re.compile("^\t\tMove:(\d+,\d+) (\d+,\d+)\n$")
+        FileList = ReadFile.read()
+        Error = False
+        while currentIndex < len(FileList) and not Error:
+            currentString = FileList[currentIndex]
+            if currentState == 1:
+                #Header
+                if bool(Pattern1.match(currentString)):
+                    currentState = 2
+                else:
+                    Error = True
+            elif currentState == 2:
+                #Turn Number
+                
+                #Matches Pattern2: Set Entry into NewData
+                
+                #Matches EndPattern: Add Data to File
+            elif currentState == 3:
+                #State number
+                
+                #Matches Pattern3: Create New State
+                
+                #Matches EndPattern2: Revert back to State 2
+            elif currentState == 4:
+                #Move Number
+                
+                #Matches Pattern4: Add Move to Statelist
+                
+                #Matches EndPattern3: Revert back to State 3
+            else:
+                Error = True
+                
         
         
     def processData(self,winValue):
@@ -153,6 +201,8 @@ class ComputerPlayer(Player):
             self.AddMove(previousState,previousMove)
         elif winValue == False and (self.Mode == "Subtraction" or self.Mode == "Mixed"):
             self.RemoveMove(previousState,previousMove)
+            
+        self.saveData(grid,mode)
         
     def nextMove(self,turnNumber):
         print("Turn Number "+str(turnNumber)+", "+ self.getToken() + "'s turn")
