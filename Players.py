@@ -228,3 +228,17 @@ class ComputerPlayer(Player):
         CurrentMove = CurrentState.getMove()
         previousMove = CurrentMove
         return CurrentMove
+    
+    
+    
+class State:
+    '''Responsible for holding the configuration and Movelist for a given grid
+    Variables:
+    grid
+    Movelist
+    
+    Functions:
+    AddMove()
+    RemoveMove()
+    
+    '''
