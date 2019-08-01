@@ -161,11 +161,12 @@ class ComputerPlayer(Player):
         currentST = None
         #Patterns
         EndPattern = re.compile("^END$")
-        EndPattern2 = re.compile("^END\n$")
+        EndPattern2 = re.compile("^\t\tENDMOVES\n$")
+        EndPattern3 = re.compile("^\tENDSTATES\n$")
         Pattern1 = re.compile("^Ai for "+mode+str(len(grid))+"\n$")
         Pattern2 = re.compile("^Turn (\d+):\n$")
-        Pattern3 = re.compile("^State:([X,Y, ]{"+str(len(grid)*len(grid))+"})\n$")
-        Pattern4 = re.compile("^Move:(\d+),(\d+) (\d+),(\d+)\n$")
+        Pattern3 = re.compile("^\tState:([X,Y, ]{"+str(len(grid)*len(grid))+"})\n$")
+        Pattern4 = re.compile("^\t\tMove:(\d+),(\d+) (\d+),(\d+)\n$")
         
         FileList = ReadFile.readlines()
         Error = False
@@ -184,7 +185,7 @@ class ComputerPlayer(Player):
                     NewData[int(Pattern2.match(currentString).group(1))] = []
                     currentTurn = int(Pattern2.match(currentString).group(1))
                     currentState = 3
-                #Matches EndPattern: Add Data to File
+                #Matches EndPattern: Add Data to File, Final End
                 elif bool(EndPattern.match(currentString)):
                     self.CurrentData = NewData
                 else:
@@ -198,8 +199,8 @@ class ComputerPlayer(Player):
                     currentST = State(grid)
                     NewData[currentTurn].append(currentST)
                     currentState = 4
-                #Matches EndPattern2: Revert back to State 2
-                elif bool(EndPattern2.match(currentString)):
+                #Matches EndPattern3: Revert back to State 2, End States
+                elif bool(EndPattern3.match(currentString)):
                     currentState = 2
                 else:
                     Error = True
@@ -213,7 +214,7 @@ class ComputerPlayer(Player):
                     currentST.AddMove(Move((int(fromSpotX),int(fromSpotY)),(int(toSpotX),int(toSpotY))))
                     currentState = 4
                 
-                #Matches EndPattern2: Revert back to State 3
+                #Matches EndPattern2: Revert back to State 3, End Moves
                 elif bool(EndPattern2.match(currentString)):
                     currentState = 3
                 else:
