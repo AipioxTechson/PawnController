@@ -1,3 +1,9 @@
 Ai for Addition3
-Turn 3:
+Turn 2:
+State:X X X YYY
+Move:2,0 1,1
+Move:2,2 1,1
+Move:2,2 1,2
+END
+END
 END

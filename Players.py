@@ -1,5 +1,5 @@
 import re
-from Game import Move
+from Game import Move, Piece
 import random
 class Player:
     '''Responsible for creating the Abstract Player
@@ -158,14 +158,14 @@ class ComputerPlayer(Player):
         currentState = 1
         currentIndex = 0
         currentTurn = None
+        currentST = None
         #Patterns
         EndPattern = re.compile("^END$")
-        EndPattern2 = re.compile("^\tEND\n$")
-        EndPattern3 = re.compile("^\t\tEND\n$")
+        EndPattern2 = re.compile("^END\n$")
         Pattern1 = re.compile("^Ai for "+mode+str(len(grid))+"\n$")
         Pattern2 = re.compile("^Turn (\d+):\n$")
-        Pattern3 = re.compile("^\tState:([X,Y, ]{%d})\n$" % len(grid) * len(grid))
-        Pattern4 = re.compile("^\t\tMove:(\d+,\d+) (\d+,\d+)\n$")
+        Pattern3 = re.compile("^State:([X,Y, ]{"+str(len(grid)*len(grid))+"})\n$")
+        Pattern4 = re.compile("^Move:(\d+),(\d+) (\d+),(\d+)\n$")
         
         FileList = ReadFile.readlines()
         Error = False
@@ -181,30 +181,55 @@ class ComputerPlayer(Player):
                 #Turn Number
                 #Matches Pattern2: Set Entry into NewData
                 if bool(Pattern2.match(currentString)):
-                    NewData[Pattern2.match(currentString).group(1)] = {}
-                    currentTurn = Pattern2.match(currentString).group(1)
+                    NewData[int(Pattern2.match(currentString).group(1))] = []
+                    currentTurn = int(Pattern2.match(currentString).group(1))
+                    currentState = 3
                 #Matches EndPattern: Add Data to File
-                if bool(EndPattern.match(currentString)):
+                elif bool(EndPattern.match(currentString)):
                     self.CurrentData = NewData
+                else:
+                    Error = True
             elif currentState == 3:
-                pass
                 #State number
                 
                 #Matches Pattern3: Create New State
-                
+                if bool(Pattern3.match(currentString)):
+                    grid = self.generateGrid(len(grid),Pattern3.match(currentString).group(1))
+                    currentST = State(grid)
+                    NewData[currentTurn].append(currentST)
+                    currentState = 4
                 #Matches EndPattern2: Revert back to State 2
+                elif bool(EndPattern2.match(currentString)):
+                    currentState = 2
+                else:
+                    Error = True
             elif currentState == 4:
-                pass
                 #Move Number
                 
                 #Matches Pattern4: Add Move to Statelist
+                if bool(Pattern4.match(currentString)):
+                    matchedGroup = Pattern4.match(currentString)
+                    fromSpotX,fromSpotY,toSpotX,toSpotY = matchedGroup.group(1),matchedGroup.group(2),matchedGroup.group(3),matchedGroup.group(4)
+                    currentST.AddMove(Move((int(fromSpotX),int(fromSpotY)),(int(toSpotX),int(toSpotY))))
+                    currentState = 4
                 
-                #Matches EndPattern3: Revert back to State 3
+                #Matches EndPattern2: Revert back to State 3
+                elif bool(EndPattern2.match(currentString)):
+                    currentState = 3
+                else:
+                    Error = True
             else:
                 Error = True
             currentIndex += 1
         ReadFile.close()
-        print(self.CurrentData)
+        #print(self.CurrentData)
+        #for key, values in self.CurrentData.items():
+            #for value in values:
+                #print(value.grid)
+                #for moves in value.Movelist:
+                    #print(moves.fromSpot,moves.toSpot)
+        if Error == True:
+            print("-----Error Reading Ai's Data File.-----")
                 
         
         
@@ -229,17 +254,27 @@ class ComputerPlayer(Player):
         previousState = CurrentState
         CurrentMove = CurrentState.getMove()
         previousMove = CurrentMove
-        return CurrentMove
+        return CurrentMove, self
     
     def getState(self,turnNumber):
         currentState = State(self.grid)
-        for State in self.CurrentData[turnNumber]:
-            if State == currentState:
-                return State
+        for States in self.CurrentData[turnNumber]:
+            if States == currentState:
+                return States
         return None
     
     def generateGrid(self,gridlength,compressionString):
-        pass
+        currentGrid = []
+        currentRow = []
+        for index in range(len(compressionString)):
+            currentCharacter = compressionString[index]
+            currentRow.append(Piece(index // gridlength, index % gridlength, currentCharacter))
+            if index % gridlength == gridlength -1:
+                currentGrid.append(currentRow)
+                currentRow = []
+        return currentGrid
+                
+                
     
 class State:
     '''Responsible for holding the configuration and Movelist for a given grid
@@ -271,3 +306,12 @@ class State:
                 if self.grid[row][column].getToken() != other.grid[row][column].getToken():
                     return False
         return True
+    
+    def __str__(self):
+        s = ''
+        for row in range(len(self.grid)):
+            for column in self.grid[row]:
+                s = s +"|" + column.getToken()
+                
+            s += "\n"
+        return s        
