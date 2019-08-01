@@ -14,11 +14,12 @@ class Game:
     getWinner()
     """
 
-    def __init__(self,player1: "Player" ,player2: "Player", grid = []):
+    def __init__(self,player1: "Player" ,player2: "Player", grid = [],Training = False):
         self.grid = grid
         self.turn = 0
         self.player_one = player1
         self.player_two = player2
+        self.Training = Training
     
     def isWin(self):
         isWinner = False
@@ -75,7 +76,8 @@ class Game:
         self.grid[toX][toY] = self.grid[fromX][fromY]
         self.grid[fromX][fromY] = Piece(fromX,fromY," ")
         self.grid[toX][toY].updatePosition(toX,toY)
-        print(player.getToken() +" moved to: " + "("+str(toX)+","+str(toY)+")")
+        if not self.Training:
+            print(player.getToken() +" moved to: " + "("+str(toX)+","+str(toY)+")")
     
     def printState(self):
         s = ' '

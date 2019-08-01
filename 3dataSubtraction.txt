@@ -1,0 +1,78 @@
+Ai for Subtraction3
+Turn 2:
+	State: XXX  YYY
+		Move:2,1 1,0
+		ENDMOVES
+	State:X X X YYY
+		Move:2,0 1,0
+		Move:2,0 1,1
+		Move:2,2 1,1
+		ENDMOVES
+	State:XX   XYYY
+		Move:2,1 1,2
+		ENDMOVES
+	ENDSTATES
+Turn 4:
+	State:  XXXYYY 
+		Move:2,0 1,1
+		Move:2,1 1,0
+		ENDMOVES
+	State:  XXY YY 
+		Move:2,1 1,0
+		Move:1,1 0,1
+		Move:1,1 0,2
+		ENDMOVES
+	State: X XX Y Y
+		Move:2,0 1,1
+		Move:2,2 1,2
+		Move:2,2 1,1
+		ENDMOVES
+	State:  XX  Y Y
+		Move:2,2 1,2
+		ENDMOVES
+	State:X   X  YY
+		Move:2,2 1,2
+		Move:2,2 1,1
+		ENDMOVES
+	State: X  XXY Y
+		Move:2,0 1,0
+		Move:2,0 1,1
+		Move:2,2 1,1
+		ENDMOVES
+	State: X X YY Y
+		Move:1,2 0,2
+		Move:1,2 0,1
+		ENDMOVES
+	State:  X X  YY
+		Move:2,2 1,2
+		Move:2,2 1,1
+		ENDMOVES
+	State: X Y XY Y
+		Move:1,0 0,0
+		Move:1,0 0,1
+		ENDMOVES
+	State:  XXY  YY
+		Move:1,1 0,1
+		Move:1,1 0,2
+		Move:2,2 1,2
+		ENDMOVES
+	State:  X X YY 
+		Move:2,0 1,0
+		Move:2,0 1,1
+		ENDMOVES
+	ENDSTATES
+Turn 6:
+	State:   XXY Y 
+		Move:1,2 0,2
+		ENDMOVES
+	State:   YX Y  
+		Move:2,0 1,1
+		Move:1,0 0,0
+		ENDMOVES
+	State:   XXX  Y
+		ENDMOVES
+	State:   YXX Y 
+		Move:1,0 0,0
+		ENDMOVES
+	ENDSTATES
+END

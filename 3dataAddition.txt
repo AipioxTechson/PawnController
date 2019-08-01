@@ -1,0 +1,99 @@
+Ai for Addition3
+Turn 1:
+	State:XXX   YYY
+		Move:0,0 1,0
+		Move:0,1 1,1
+		Move:0,2 1,2
+		ENDMOVES
+	ENDSTATES
+Turn 3:
+	State: XXX YYY 
+		Move:1,0 2,1
+		Move:0,1 1,1
+		Move:0,1 1,2
+		Move:1,0 2,1
+		ENDMOVES
+	State:X X Y YY 
+		Move:0,0 1,0
+		Move:0,0 1,1
+		Move:0,2 1,2
+		Move:0,2 1,1
+		ENDMOVES
+	State: XXXY Y Y
+		Move:0,2 1,2
+		Move:0,2 1,1
+		Move:0,2 1,2
+		ENDMOVES
+	State:X X XYYY 
+		Move:0,0 1,0
+		Move:1,1 2,0
+		Move:1,1 2,0
+		ENDMOVES
+	State: XXY  Y Y
+		Move:0,1 1,1
+		Move:0,1 1,0
+		Move:0,2 1,2
+		ENDMOVES
+	State:X X Y  YY
+		Move:0,0 1,0
+		Move:0,0 1,1
+		Move:0,2 1,2
+		Move:0,2 1,1
+		ENDMOVES
+	State:XX  YXY Y
+		Move:0,0 1,0
+		Move:0,0 1,1
+		Move:0,0 1,0
+		ENDMOVES
+	State:XX   YY Y
+		Move:0,0 1,0
+		Move:0,1 1,1
+		Move:0,1 1,2
+		ENDMOVES
+	State:XX Y X YY
+		Move:0,1 1,1
+		Move:0,1 1,0
+		Move:1,2 2,1
+		Move:1,2 2,1
+		ENDMOVES
+	ENDSTATES
+Turn 5:
+	State:  XXYY Y 
+		Move:1,0 2,0
+		Move:1,0 2,1
+		Move:0,2 1,1
+		ENDMOVES
+	State:  XYY Y  
+		Move:0,2 1,2
+		Move:0,2 1,1
+		ENDMOVES
+	State:X   XY Y 
+		Move:0,0 1,0
+		ENDMOVES
+	State: X YXX  Y
+		Move:1,1 2,1
+		Move:1,1 2,2
+		Move:0,1 1,0
+		ENDMOVES
+	State:  XYY   Y
+		Move:0,2 1,2
+		Move:0,2 1,1
+		Move:0,2 1,2
+		ENDMOVES
+	State:  XYX  Y 
+		Move:0,2 1,2
+		ENDMOVES
+	ENDSTATES
+Turn 7:
+	State:   YXY   
+		Move:1,1 2,1
+		Move:1,1 2,1
+		Move:1,1 2,1
+		ENDMOVES
+	State:   XYX   
+		Move:1,0 2,0
+		Move:1,2 2,2
+		Move:1,0 2,0
+		ENDMOVES
+	ENDSTATES
+END

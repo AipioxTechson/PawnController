@@ -144,13 +144,14 @@ class ComputerPlayer(Player):
     getState()
     generateGrid()
     '''
-    def __init__(self,Token,pieces,grid,player_number,mode):
+    def __init__(self,Token,pieces,grid,player_number,mode,Training):
         Player.__init__(self,Token,pieces,grid,player_number)
         self.Mode = mode
         self.previousState = None
         self.previousMove = None
         self.CurrentData = {}
         self.readData(grid,mode)
+        self.Training = Training
         
     def readData(self,grid,mode):
         try:
@@ -240,7 +241,8 @@ class ComputerPlayer(Player):
         self.saveData(self.grid,self.Mode)
         
     def nextMove(self,turnNumber):
-        print("Turn Number "+str(turnNumber)+", "+ self.getToken() + "'s turn")
+        if not self.Training:
+            print("Turn Number "+str(turnNumber)+", "+ self.getToken() + "'s turn")
         
         CurrentState = None
         if turnNumber in self.CurrentData:

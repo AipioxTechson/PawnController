@@ -1,0 +1,966 @@
+Ai for Addition6
+Turn 1:
+	State:XXXXXX                        YYYYYY
+		Move:0,0 1,0
+		Move:0,1 1,1
+		Move:0,2 1,2
+		Move:0,3 1,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	ENDSTATES
+Turn 3:
+	State:XX XXX  X               Y      YYYYY
+		Move:0,0 1,0
+		Move:0,1 1,1
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:XXXX X    X             Y      YYYYY
+		Move:0,0 1,0
+		Move:0,1 1,1
+		Move:0,2 1,2
+		Move:0,3 1,3
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	State: XXXXXX                    Y  YYY YY
+		Move:1,0 2,0
+		Move:0,1 1,1
+		Move:0,2 1,2
+		Move:0,3 1,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:X XXXX X                     YYYYYY 
+		Move:0,0 1,0
+		Move:1,1 2,1
+		Move:0,2 1,2
+		Move:0,3 1,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:X XXXX X                  Y   YY YYY
+		Move:0,0 1,0
+		Move:1,1 2,1
+		Move:0,2 1,2
+		Move:0,3 1,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:XX XXX  X                    YYYYYY 
+		Move:0,0 1,0
+		Move:0,1 1,1
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:XXX XX   X                  Y YYYY Y
+		Move:0,0 1,0
+		Move:0,1 1,1
+		Move:0,2 1,2
+		Move:1,3 2,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	State: XXXXXX                  Y    Y YYYY
+		Move:1,0 2,0
+		Move:0,1 1,1
+		Move:0,2 1,2
+		Move:0,3 1,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	ENDSTATES
+Turn 5:
+	State: X XXXX X         Y            YYYYY
+		Move:1,0 2,0
+		Move:0,1 1,1
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:X XX X X  X             Y  Y   YY YY
+		Move:0,0 1,0
+		Move:1,1 2,1
+		Move:0,2 1,2
+		Move:0,3 1,3
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	State: XXX XX   X               YY  YY  YY
+		Move:1,0 2,0
+		Move:0,1 1,1
+		Move:0,2 1,2
+		Move:0,3 1,3
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	State: XXX XX   X              Y Y  Y Y YY
+		Move:1,0 2,0
+		Move:0,1 1,1
+		Move:0,2 1,2
+		Move:0,3 1,3
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:X XX X X  X            Y      YYYYY 
+		Move:0,0 1,0
+		Move:1,1 2,1
+		Move:0,2 1,2
+		Move:0,3 1,3
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:X  XXX XX                 YY  YY  YY
+		Move:0,0 1,0
+		Move:1,1 2,1
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	State: XXXXX      X           Y  Y   YY YY
+		Move:2,0 3,0
+		Move:0,1 1,1
+		Move:0,2 1,2
+		Move:0,3 1,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	State: X XXXX X                 Y  YYY YY 
+		Move:1,0 2,0
+		Move:0,1 1,1
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	State: XX XXX  X              Y   Y  YYY Y
+		Move:1,0 2,0
+		Move:0,1 1,1
+		Move:0,2 1,2
+		Move:1,3 2,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	State: XXXXX      X           YY      YYYY
+		Move:2,0 3,0
+		Move:0,1 1,1
+		Move:0,2 1,2
+		Move:0,3 1,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	ENDSTATES
+Turn 7:
+	State: X XXXX       X   Y          Y YYYY 
+		Move:1,0 2,0
+		Move:0,1 1,1
+		Move:2,2 3,2
+		Move:0,3 1,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:X X  X X XX             Y YY   Y  YY
+		Move:0,0 1,0
+		Move:1,1 2,1
+		Move:0,2 1,2
+		Move:1,3 2,3
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	State: X X XX X X               YY YYY  Y 
+		Move:1,0 2,0
+		Move:0,1 1,1
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	State: XXX XX         X       YY Y    Y YY
+		Move:1,0 2,0
+		Move:0,1 1,1
+		Move:0,2 1,2
+		Move:0,3 1,3
+		Move:2,4 3,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:X  X X XX X            Y   Y  YYY Y 
+		Move:0,0 1,0
+		Move:1,1 2,1
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:X   XX XXX               YYY  Y   YY
+		Move:0,0 1,0
+		Move:1,1 2,1
+		Move:1,2 2,2
+		Move:1,3 2,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	State: XXXXX            X     YY Y    Y YY
+		Move:3,0 4,1
+		Move:0,1 1,1
+		Move:0,2 1,2
+		Move:0,3 1,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	State: X XXX  X   X       Y        YYY YY 
+		Move:2,0 3,0
+		Move:0,1 1,1
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	State: XX XX   X  X         Y Y      YYY Y
+		Move:2,0 3,0
+		Move:0,1 1,1
+		Move:0,2 1,2
+		Move:1,3 2,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	State: XX XX   X  X     Y      Y      YYYY
+		Move:0,1 1,1
+		Move:0,2 1,2
+		Move:1,3 2,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	ENDSTATES
+Turn 9:
+	State: X XXXX           Y X     Y  Y Y YY 
+		Move:1,0 2,0
+		Move:0,1 1,1
+		Move:0,3 1,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:X    X XXXX             Y YYY  Y   Y
+		Move:0,0 1,0
+		Move:1,1 2,1
+		Move:1,2 2,2
+		Move:1,3 2,3
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:   X XXXX X             Y YY Y Y  Y 
+		Move:1,0 2,0
+		Move:1,1 2,1
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	State: X X XX X       X       YY Y Y  Y Y 
+		Move:1,0 2,0
+		Move:0,1 1,1
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:2,4 3,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:X  X   XX XX     Y         Y  YYY Y 
+		Move:0,0 1,0
+		Move:1,1 2,1
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:1,4 2,4
+		Move:1,4 2,5
+		ENDMOVES
+	State:X    X XXXX              YYY YY   Y 
+		Move:0,0 1,0
+		Move:1,1 2,1
+		Move:1,2 2,2
+		Move:1,3 2,3
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	State: XX XX   X        X     YY YY   Y  Y
+		Move:3,0 4,1
+		Move:0,1 1,1
+		Move:0,2 1,2
+		Move:1,3 2,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	State: X X X  X X X       Y       YYYY Y  
+		Move:2,0 3,0
+		Move:0,1 1,1
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	State: XX XX   X        X   Y Y Y    Y Y Y
+		Move:0,1 1,1
+		Move:0,2 1,2
+		Move:1,3 2,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:  X XX X X  X     Y      Y  Y   YY Y
+		Move:1,1 2,1
+		Move:0,2 1,2
+		Move:1,3 2,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	ENDSTATES
+Turn 11:
+	State: X X XX   X       Y X    YY  Y   YY 
+		Move:1,0 2,0
+		Move:0,1 1,1
+		Move:3,2 4,1
+		Move:0,3 1,3
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:     XXXXXX         Y   Y  YY  Y   Y
+		Move:1,0 2,0
+		Move:1,1 2,1
+		Move:1,2 2,2
+		Move:1,3 2,3
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:   X X XX X X           Y YYYY Y    
+		Move:2,0 3,0
+		Move:1,1 2,1
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	State: X X XX X             X YYYY Y    Y 
+		Move:1,0 2,0
+		Move:0,1 1,1
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:3,4 4,4
+		Move:3,4 4,5
+		Move:3,4 4,3
+		Move:0,5 1,5
+		ENDMOVES
+	State:X  X   XX  X    XY      Y  Y   YY Y 
+		Move:0,0 1,0
+		Move:1,1 2,1
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:2,4 3,4
+		ENDMOVES
+	State:X    X  XXX  X          YYYY Y    Y 
+		Move:0,0 1,0
+		Move:2,1 3,1
+		Move:1,2 2,2
+		Move:1,3 2,3
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	State: XX X    X X      X     YYYYY      Y
+		Move:3,0 4,1
+		Move:0,1 1,1
+		Move:0,2 1,2
+		Move:1,3 2,3
+		Move:0,4 1,4
+		Move:1,5 2,5
+		ENDMOVES
+	State: X X    X XXX       Y    Y  YYY  Y  
+		Move:2,0 3,0
+		Move:0,1 1,1
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:1,4 2,4
+		Move:1,5 2,5
+		ENDMOVES
+	State: XX XX         Y  X     Y Y    Y Y Y
+		Move:0,1 1,1
+		Move:0,2 1,2
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:    XX XXX  X     Y      Y  YY  YY  
+		Move:1,1 2,1
+		Move:1,2 2,2
+		Move:1,3 2,3
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	ENDSTATES
+Turn 13:
+	State: X   XX  XX       Y X    YYY Y    Y 
+		Move:1,0 2,0
+		Move:0,1 1,1
+		Move:3,2 4,3
+		Move:3,2 4,1
+		Move:1,3 2,3
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:     XXX XX   X     YY  Y   Y  Y   Y
+		Move:1,0 2,0
+		Move:1,1 2,1
+		Move:2,2 3,3
+		Move:1,3 2,3
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:   X   XX XXX           YYYYYY      
+		Move:2,0 3,0
+		Move:1,1 2,1
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:1,4 2,4
+		Move:1,5 2,5
+		ENDMOVES
+	State:   X XXXX             X YYYYYY      
+		Move:1,0 2,0
+		Move:1,1 2,1
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:3,4 4,5
+		Move:3,4 4,3
+		Move:0,5 1,5
+		ENDMOVES
+	State:X  X   XX  X     Y    X YY Y    Y Y 
+		Move:0,0 1,0
+		Move:1,1 2,1
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:3,4 4,4
+		Move:3,4 4,3
+		ENDMOVES
+	State:X    X  XX   X  X  Y    Y YY Y    Y 
+		Move:0,0 1,0
+		Move:1,2 2,2
+		Move:1,3 2,3
+		Move:2,4 3,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:  X X  X X X      X     YYYYYY      
+		Move:3,0 4,1
+		Move:1,1 2,1
+		Move:0,2 1,2
+		Move:1,3 2,3
+		Move:0,4 1,4
+		Move:1,5 2,5
+		ENDMOVES
+	State: X X    X X X    X  Y Y  Y   YY  Y  
+		Move:2,0 3,0
+		Move:0,1 1,1
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:1,4 2,4
+		Move:2,5 3,5
+		Move:2,5 3,4
+		ENDMOVES
+	State:  X XX X       Y  X     Y Y  Y Y Y  
+		Move:1,1 2,1
+		Move:0,2 1,2
+		Move:0,4 1,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:     X XXXX X     YY        YY  YY  
+		Move:2,0 3,1
+		Move:1,1 2,1
+		Move:1,2 2,2
+		Move:1,3 2,3
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	ENDSTATES
+Turn 15:
+	State: X   X   XX X     Y Y     YY Y    Y 
+		Move:0,1 1,1
+		Move:1,3 2,3
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:     XXX  X   XX  Y YY      Y  Y   Y
+		Move:1,0 2,0
+		Move:1,1 2,1
+		Move:2,2 3,3
+		Move:2,3 3,2
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:   X    X XXXX    Y      YYYYY      
+		Move:2,1 3,1
+		Move:2,1 3,0
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:1,4 2,4
+		Move:1,5 2,5
+		ENDMOVES
+	State:   X X XX   X      Y  X Y YYYY      
+		Move:2,0 3,0
+		Move:2,0 3,1
+		Move:1,1 2,1
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:3,4 4,5
+		Move:3,4 4,3
+		Move:0,5 1,5
+		ENDMOVES
+	State:X  X   XX  X     Y Y    Y  YX   Y Y 
+		Move:0,0 1,0
+		Move:1,1 2,1
+		Move:1,2 2,2
+		Move:0,3 1,3
+		ENDMOVES
+	State:X    X  XX   X     Y  Y Y YY      Y 
+		Move:0,0 1,0
+		Move:1,2 2,2
+		Move:1,3 2,3
+		Move:0,5 1,5
+		ENDMOVES
+	State:  X X  X X       XX   Y YYYY Y      
+		Move:3,0 4,1
+		Move:1,1 2,1
+		Move:0,2 1,2
+		Move:1,3 2,3
+		Move:0,4 1,4
+		Move:2,5 3,5
+		Move:2,5 3,4
+		ENDMOVES
+	State: X X    X X      XX Y YY Y    Y  Y  
+		Move:3,0 4,0
+		Move:3,0 4,1
+		Move:0,1 1,1
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:1,4 2,4
+		Move:2,5 3,4
+		ENDMOVES
+	State:  X  X X  X    Y  X Y   Y    Y Y Y  
+		Move:1,1 2,1
+		Move:0,2 1,2
+		Move:1,4 2,4
+		Move:1,4 2,3
+		Move:0,5 1,5
+		ENDMOVES
+	State:     X  XXX XY     Y        YY  YY  
+		Move:2,0 3,0
+		Move:2,0 3,1
+		Move:1,2 2,2
+		Move:1,2 2,1
+		Move:1,3 2,3
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	ENDSTATES
+Turn 17:
+	State: X   X    X X  X  Y YY    Y  Y    Y 
+		Move:0,1 1,1
+		Move:2,3 3,2
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:     XXX  X   XY  Y X       Y  Y   Y
+		Move:1,0 2,0
+		Move:1,1 2,1
+		Move:3,2 4,2
+		Move:1,4 2,4
+		Move:1,4 2,3
+		Move:0,5 1,5
+		ENDMOVES
+	State:   X    X  XXX  X Y  Y   YY YY      
+		Move:2,1 3,1
+		Move:2,1 3,0
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:2,4 3,4
+		Move:2,4 3,3
+		Move:1,5 2,5
+		ENDMOVES
+	State:     X XXX  XY        X Y YYYY      
+		Move:2,0 3,0
+		Move:1,2 2,2
+		Move:1,2 2,1
+		Move:1,3 2,3
+		Move:3,4 4,5
+		Move:3,4 4,3
+		Move:0,5 1,5
+		ENDMOVES
+	State:X  X   X   X  X  Y Y    Y YYX     Y 
+		Move:0,0 1,0
+		Move:1,1 2,1
+		Move:2,2 3,2
+		Move:2,2 3,1
+		Move:0,3 1,3
+		ENDMOVES
+	State:X       XX X X    YY  Y   YY      Y 
+		Move:0,0 1,0
+		Move:2,1 3,0
+		Move:1,2 2,2
+		Move:1,3 2,3
+		Move:1,5 2,5
+		ENDMOVES
+	State:    X  XXX       XX Y Y YY Y Y      
+		Move:3,0 4,1
+		Move:1,1 2,1
+		Move:1,2 2,2
+		Move:1,3 2,3
+		Move:0,4 1,4
+		Move:2,5 3,5
+		Move:2,5 3,4
+		ENDMOVES
+	State: X X    X       XYX Y  Y Y    Y  Y  
+		Move:3,0 4,0
+		Move:3,0 4,1
+		Move:0,1 1,1
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:2,4 3,4
+		Move:2,4 3,5
+		ENDMOVES
+	State:  X  X X       YX X Y   Y  Y Y Y    
+		Move:1,1 2,1
+		Move:0,2 1,2
+		Move:2,4 3,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:     X  Y X X  X   Y        YY  YY  
+		Move:2,0 3,0
+		Move:2,0 3,1
+		Move:2,3 3,3
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	ENDSTATES
+Turn 19:
+	State:     X X  X X  X  Y YY Y  Y       Y 
+		Move:1,1 2,1
+		Move:2,3 3,2
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	State:     XX   X  XXY  Y X Y        Y   Y
+		Move:1,0 2,0
+		Move:2,1 3,1
+		Move:2,1 3,0
+		Move:3,2 4,2
+		Move:1,4 2,4
+		Move:1,4 2,3
+		Move:0,5 1,5
+		ENDMOVES
+	State:   X    X   XX  XXYY Y    Y YY      
+		Move:2,0 3,1
+		Move:2,1 3,0
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:2,4 3,4
+		Move:2,4 3,3
+		Move:2,5 3,5
+		ENDMOVES
+	State:     X XXX   Y    X Y X Y  YYY      
+		Move:1,2 2,2
+		Move:1,2 2,1
+		Move:1,3 2,3
+		Move:3,4 4,5
+		Move:3,4 4,3
+		Move:0,5 1,5
+		ENDMOVES
+	State:X  X   X   X     Y XY   Y  YX     Y 
+		Move:0,0 1,0
+		Move:1,1 2,1
+		Move:3,1 4,1
+		Move:3,1 4,0
+		Move:0,3 1,3
+		ENDMOVES
+	State:X       XX   Y   X Y  Y   YY      Y 
+		Move:0,0 1,0
+		Move:1,2 2,2
+		Move:1,2 2,1
+		Move:1,3 2,3
+		Move:2,5 3,5
+		Move:2,5 3,4
+		ENDMOVES
+	State:    X  X X    X  XY Y Y Y  Y Y      
+		Move:1,1 2,1
+		Move:1,3 2,3
+		Move:0,4 1,4
+		Move:2,5 3,5
+		Move:2,5 3,4
+		ENDMOVES
+	State: X X    X     Y XY     Y X    Y  Y  
+		Move:4,1 5,1
+		Move:4,1 5,0
+		Move:0,1 1,1
+		Move:0,3 1,3
+		Move:2,4 3,4
+		Move:2,4 3,5
+		ENDMOVES
+	State:  X  X X       Y  X Y Y Y  Y   Y    
+		Move:1,1 2,1
+		Move:0,2 1,2
+		Move:0,5 1,5
+		ENDMOVES
+	State:     X  Y X    X  XY      Y YY   Y  
+		Move:3,0 4,0
+		Move:2,3 3,3
+		Move:1,4 2,4
+		Move:0,5 1,5
+		ENDMOVES
+	ENDSTATES
+Turn 21:
+	State:       X  XXX  Y  Y  Y Y  Y       Y 
+		Move:1,1 2,1
+		Move:1,4 2,4
+		Move:1,4 2,3
+		Move:1,5 2,5
+		ENDMOVES
+	State:     XX   X   XYY X X          Y   Y
+		Move:1,0 2,0
+		Move:3,0 4,0
+		Move:3,2 4,2
+		Move:1,4 2,3
+		Move:0,5 1,5
+		ENDMOVES
+	State:   X    X   Y   XXX  Y    Y YY      
+		Move:3,0 4,0
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:2,4 3,4
+		Move:2,4 3,3
+		Move:2,5 3,5
+		ENDMOVES
+	State:     X X X   YX   X Y Y Y   YY      
+		Move:1,3 2,3
+		Move:0,5 1,5
+		ENDMOVES
+	State:X  X   X   X  Y  Y      YX YX     Y 
+		Move:0,0 1,0
+		Move:1,1 2,1
+		Move:1,1 2,2
+		Move:4,1 5,1
+		Move:0,3 1,3
+		ENDMOVES
+	State:X        X   YX  X Y YY   Y       Y 
+		Move:0,0 1,0
+		Move:2,2 3,2
+		Move:2,2 3,3
+		Move:2,2 3,1
+		Move:1,3 2,3
+		Move:2,5 3,5
+		Move:2,5 3,4
+		ENDMOVES
+	State:    X  X X    X Y Y Y  XY  Y Y      
+		Move:1,1 2,1
+		Move:1,3 2,3
+		Move:1,3 2,4
+		Move:0,4 1,4
+		ENDMOVES
+	State:   X   XX     Y XY     Y X Y  Y     
+		Move:4,1 5,1
+		Move:4,1 5,0
+		Move:1,1 2,1
+		Move:1,1 2,2
+		Move:0,3 1,3
+		Move:2,4 3,4
+		Move:2,4 3,5
+		Move:4,1 5,0
+		ENDMOVES
+	State:     X XX      Y  X YYY Y      Y    
+		Move:1,1 2,1
+		Move:1,2 2,2
+		Move:1,2 2,3
+		Move:0,5 1,5
+		ENDMOVES
+	ENDSTATES
+Turn 23:
+	State:       X   XX  X  Y  Y Y  Y Y       
+		Move:1,1 2,1
+		Move:1,5 2,5
+		ENDMOVES
+	State:     X    Y X X Y X X          Y   Y
+		Move:3,0 4,0
+		Move:3,2 4,2
+		Move:0,5 1,5
+		Move:0,5 1,4
+		ENDMOVES
+	State:   X  Y X       X X  Y X  Y YY      
+		Move:3,0 4,0
+		Move:1,2 2,2
+		Move:0,3 1,3
+		Move:2,4 3,4
+		Move:2,4 3,3
+		Move:3,5 4,4
+		ENDMOVES
+	State:       X X X YX Y X Y   Y   YY      
+		Move:1,3 2,3
+		Move:1,3 2,4
+		Move:1,5 2,5
+		Move:1,5 2,4
+		ENDMOVES
+	State:X  X    Y  X X   Y      YX YX     Y 
+		Move:0,0 1,0
+		Move:2,1 3,1
+		Move:4,1 5,1
+		Move:0,3 1,3
+		Move:0,3 1,2
+		ENDMOVES
+	State:X        X   Y   Y YXY    Y       Y 
+		Move:0,0 1,0
+		Move:1,3 2,3
+		ENDMOVES
+	State:    X    XY  XX   Y Y  XY  Y Y      
+		Move:2,1 3,1
+		Move:2,1 3,2
+		Move:2,1 3,0
+		Move:1,3 2,3
+		ENDMOVES
+	State:     X X      XYY X YY  Y      Y    
+		Move:1,1 2,1
+		Move:2,2 3,3
+		Move:0,5 1,5
+		ENDMOVES
+	ENDSTATES
+Turn 25:
+	State:       X    X  X XY  YYY  Y         
+		Move:1,1 2,1
+		Move:2,3 3,4
+		Move:2,5 3,4
+		ENDMOVES
+	State:   X  Y       X X X  Y Y  Y  Y      
+		Move:3,0 4,0
+		Move:2,2 3,2
+		Move:2,2 3,3
+		Move:0,3 1,3
+		Move:2,4 3,4
+		Move:2,4 3,5
+		Move:2,4 3,3
+		ENDMOVES
+	State:       X   X YXXY X Y  YY   Y       
+		Move:2,3 3,3
+		Move:2,3 3,2
+		Move:1,5 2,5
+		Move:1,5 2,4
+		ENDMOVES
+	State:X  X    Y  X     Y X Y  YX  X     Y 
+		Move:0,0 1,0
+		Move:3,1 4,0
+		Move:4,1 5,1
+		Move:0,3 1,3
+		Move:0,3 1,2
+		ENDMOVES
+	State:X      Y       X Y YXY    Y       Y 
+		Move:0,0 1,0
+		Move:0,0 1,1
+		ENDMOVES
+	State:    X    XY Y X     X  XY  Y Y      
+		Move:3,2 4,2
+		Move:3,2 4,3
+		Move:1,3 2,3
+		ENDMOVES
+	State:     X       YXYY X  Y  Y      Y    
+		Move:2,2 3,2
+		Move:2,2 3,3
+		Move:0,5 1,5
+		ENDMOVES
+	ENDSTATES
+Turn 27:
+	State:       X    X  X YY  YX   Y         
+		Move:1,1 2,1
+		Move:3,4 4,4
+		ENDMOVES
+	State:      Y  X    X X X YY Y     Y      
+		Move:3,0 4,0
+		Move:2,2 3,3
+		Move:1,3 2,3
+		Move:2,4 3,4
+		Move:2,4 3,5
+		Move:2,4 3,3
+		ENDMOVES
+	State:       X     YXYX X    YY   Y       
+		Move:2,2 3,2
+		Move:2,4 3,4
+		Move:2,4 3,5
+		ENDMOVES
+	State:   X  X Y  X     YYX Y   X  X     Y 
+		Move:1,0 2,0
+		Move:4,1 5,1
+		Move:0,3 1,3
+		Move:0,3 1,2
+		ENDMOVES
+	State:       X       X Y YXY    Y Y       
+		Move:1,1 2,1
+		Move:1,1 2,1
+		ENDMOVES
+	State:    X    XY Y X   Y    X   X Y      
+		Move:4,3 5,3
+		Move:2,2 3,2
+		Move:1,3 2,3
+		Move:4,3 5,3
+		ENDMOVES
+	State:     X       Y YY X  X  YY          
+		Move:3,0 4,1
+		Move:3,3 4,3
+		Move:0,5 1,5
+		ENDMOVES
+	ENDSTATES
+Turn 29:
+	State:       X   YX  X  Y  Y    Y X       
+		Move:1,1 2,1
+		Move:4,4 5,4
+		Move:4,4 5,4
+		ENDMOVES
+	State:      Y       XXY X YY       Y      
+		Move:3,0 4,0
+		Move:2,2 3,3
+		Move:2,3 3,2
+		ENDMOVES
+	State:       X     Y YXYX X   Y   Y       
+		Move:3,2 4,2
+		Move:2,4 3,4
+		ENDMOVES
+	State:      X X  X   Y YYX     X  X     Y 
+		Move:1,0 2,0
+		Move:4,1 5,1
+		Move:1,2 2,2
+		Move:1,2 2,3
+		ENDMOVES
+	State:     X       Y YY Y  X   X          
+		Move:4,1 5,1
+		Move:3,3 4,3
+		Move:0,5 1,5
+		ENDMOVES
+	ENDSTATES
+Turn 31:
+	State:      Y   Y   X   X XY       Y      
+		Move:3,0 4,0
+		Move:2,2 3,3
+		Move:3,2 4,2
+		ENDMOVES
+	State:       X Y   Y   YX X X Y   Y       
+		Move:3,2 4,2
+		ENDMOVES
+	State:      X  Y X  X  YYX     X  X     Y 
+		Move:1,0 2,0
+		Move:4,1 5,1
+		Move:2,2 3,2
+		ENDMOVES
+	State:     X   Y   Y  Y Y      X X        
+		Move:4,1 5,1
+		Move:4,3 5,3
+		Move:0,5 1,5
+		Move:4,3 5,3
+		ENDMOVES
+	ENDSTATES
+Turn 33:
+	State:       X Y Y Y    X   X Y X Y       
+		Move:4,2 5,2
+		Move:4,2 5,2
+		ENDMOVES
+	ENDSTATES
+END

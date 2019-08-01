@@ -21,9 +21,30 @@ def generateGrid(size,player_one_t,player_two_t):
         grid.append(grid_column)
     return (grid,p1_pieces,p2_pieces)
 
-
-
-total,gamemode, playAgain, C1Mode,C2Mode = 0,0, True, None, None
+def playGame(gamemode,C1Mode,C2Mode,Training,Token1,Token2):
+    grid,p1_pieces,p2_pieces = generateGrid(total,Token1,Token2)
+    #Sets up Gamemode
+    if gamemode == 1:
+        player1 = HumanPlayer(Token1,p1_pieces,grid,1)
+        player2 = HumanPlayer(Token2,p2_pieces,grid,2)
+    elif gamemode == 2:
+        player1 = HumanPlayer(Token1,p1_pieces,grid,1)
+        player2 = ComputerPlayer(Token2,p2_pieces,grid,2,C1Mode,Training)
+    else:
+        player1 = ComputerPlayer(Token1,p1_pieces,grid,1,C1Mode,Training)
+        player2 = ComputerPlayer(Token2,p2_pieces,grid,2,C2Mode,Training)
+        
+    CurrentGame = Game(player1,player2,grid,Training)
+    while (not CurrentGame.isWin()):
+        if not Training:
+            CurrentGame.printState()
+        
+        newMove,player = CurrentGame.nextMove()
+        CurrentGame.ApplyMove(newMove,player)
+    return CurrentGame
+        
+        
+total,gamemode, playAgain, C1Mode,C2Mode, Training,amountOfTraining = 0,0, True, None, None, False, 0
 player1, player2, player1Score, player2Score = None, None, 0,0
 Token1, Token2 = "X", "Y"
 
@@ -55,34 +76,26 @@ if gamemode == 3:
     
     C2Mode = input("What ComputerPlayer2 Mode? Addition, Subtraction, Mixed\n")
     if C2Mode != "Addition" and C2Mode != "Subtraction" and C2Mode !="Mixed":
-        C2Mode = "Subtraction"    
-while playAgain:
-    grid,p1_pieces,p2_pieces = generateGrid(total,Token1,Token2)
-    
-    #Sets up Gamemode
-    if gamemode == 1:
-        player1 = HumanPlayer(Token1,p1_pieces,grid,1)
-        player2 = HumanPlayer(Token2,p2_pieces,grid,2)
-    elif gamemode == 2:
-        player1 = HumanPlayer(Token1,p1_pieces,grid,1)
-        player2 = ComputerPlayer(Token2,p2_pieces,grid,2,C1Mode)
-    else:
-        player1 = ComputerPlayer(Token1,p1_pieces,grid,1,C1Mode)
-        player2 = ComputerPlayer(Token2,p2_pieces,grid,2,C2Mode)
+        C2Mode = "Subtraction"
+    response = input("Do you want to train the bot? Y|N")
+    if response == "Y":
+        Training = True
+        try:
+            amountTraining = int(input("How many Rounds?"))
+        except:
+            amountTraining = 10
+        if amountTraining < 0:
+            amountTraining = 10
         
-    #Main Game
-    CurrentGame = Game(player1,player2,grid)
-    while (not CurrentGame.isWin()):
-        CurrentGame.printState()
-        
-        newMove,player = CurrentGame.nextMove()
-        CurrentGame.ApplyMove(newMove,player)
-    
+if Training:
+    for i in range(amountTraining):
+        playGame(gamemode,C1Mode,C2Mode,True,Token1,Token2)
+while playAgain and not Training:
+    CurrentGame = playGame(gamemode,C1Mode,C2Mode,False,Token1,Token2)
     if CurrentGame.getWinner().player_number == 1:
         player1Score += 1
     else:
         player2Score += 1
-        
     print("Current Score: "+" X: "+str(player1Score) +" Y: " + str(player2Score))
     validInput = False
     while not validInput:
