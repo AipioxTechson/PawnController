@@ -153,7 +153,10 @@ class ComputerPlayer(Player):
         self.readData(grid,mode)
         
     def readData(self,grid,mode):
-        ReadFile = open(str(len(grid))+"data"+mode+".txt","r+")
+        try:
+            ReadFile = open(str(len(grid))+"data"+mode+".txt","r+")
+        except:
+            return 
         NewData = {}
         currentState = 1
         currentIndex = 0
@@ -223,12 +226,6 @@ class ComputerPlayer(Player):
                 Error = True
             currentIndex += 1
         ReadFile.close()
-        #print(self.CurrentData)
-        #for key, values in self.CurrentData.items():
-            #for value in values:
-                #print(value.grid)
-                #for moves in value.Movelist:
-                    #print(moves.fromSpot,moves.toSpot)
         if Error == True:
             print("-----Error Reading Ai's Data File.-----")
                 
@@ -236,11 +233,11 @@ class ComputerPlayer(Player):
         
     def processData(self,winValue):
         if winValue == True and (self.Mode == "Addition" or self.Mode == "Mixed"):
-            self.AddMove(previousState,previousMove)
+            self.AddMove(self.previousState,self.previousMove)
         elif winValue == False and (self.Mode == "Subtraction" or self.Mode == "Mixed"):
-            self.RemoveMove(previousState,previousMove)
+            self.RemoveMove(self.previousState,self.previousMove)
             
-        self.saveData(grid,mode)
+        self.saveData(self.grid,self.Mode)
         
     def nextMove(self,turnNumber):
         print("Turn Number "+str(turnNumber)+", "+ self.getToken() + "'s turn")
@@ -249,20 +246,20 @@ class ComputerPlayer(Player):
         if turnNumber in self.CurrentData:
             CurrentState = self.getState(turnNumber)
         else:
-            generateDefaultStates()
-            CurrentState = self.getState(turnNumber)
+            CurrentState = self.generateDefaultState(turnNumber)
         
-        previousState = CurrentState
+        self.previousState = CurrentState
         CurrentMove = CurrentState.getMove()
-        previousMove = CurrentMove
+        self.previousMove = CurrentMove
         return CurrentMove, self
-    
+         
     def getState(self,turnNumber):
         currentState = State(self.grid)
         for States in self.CurrentData[turnNumber]:
             if States == currentState:
                 return States
-        return None
+        
+        return self.generateDefaultState(turnNumber)
     
     def generateGrid(self,gridlength,compressionString):
         currentGrid = []
@@ -274,9 +271,56 @@ class ComputerPlayer(Player):
                 currentGrid.append(currentRow)
                 currentRow = []
         return currentGrid
-                
-                
     
+    def AddMove(self,State,Move):
+        State.AddMove(Move)
+    
+    def RemoveMove(self,State,Move):
+        State.RemoveMove(Move)
+    
+    def generateDefaultState(self,turnNumber):
+        currentST = State(self.copyGrid(self.grid))
+        for piece in self.getPieces():
+            for move in self.getAvailableMoves(piece):
+                currentST.AddMove(move)
+        if turnNumber not in self.CurrentData:
+            self.CurrentData[turnNumber] = [currentST]
+        else:
+            self.CurrentData[turnNumber].append(currentST)
+        return currentST
+        
+    
+    def saveData(self,grid,mode):
+        WriteFile = open(str(len(grid))+"data"+mode+".txt","w+")
+        WriteFile.write("Ai for "+mode+str(len(grid))+"\n")
+        for turnNumber, States in self.CurrentData.items():
+            WriteFile.write("Turn %d:\n" % turnNumber)
+            for State in States:
+                compressedString = self.getCompressedString(State.grid)
+                WriteFile.write("\tState:"+compressedString+"\n")
+                for Moves in State.Movelist:
+                    WriteFile.write("\t\tMove:"+str(Moves)+"\n")
+                WriteFile.write("\t\tENDMOVES\n")
+            WriteFile.write("\tENDSTATES\n")
+        WriteFile.write("END")
+        WriteFile.close()
+            
+    def getCompressedString(self,grid):
+        compressString = ''
+        for row in grid:
+            for column in row:
+                compressString += column.getToken()
+                
+        return compressString
+    
+    def copyGrid(self,grid):
+        newGrid = []
+        for row in range(len(grid)):
+            currentRow = []
+            for column in range(len(grid)):
+                currentRow.append(Piece(row,column,grid[row][column].getToken()))
+            newGrid.append(currentRow)
+        return newGrid
 class State:
     '''Responsible for holding the configuration and Movelist for a given grid
     Variables:

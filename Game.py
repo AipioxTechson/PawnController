@@ -134,5 +134,8 @@ class Move:
         
     def __eq__(self,other):
         return self.fromSpot == other.fromSpot and self.toSpot == other.toSpot
+    
+    def __str__(self):
+        return str(self.fromSpot[0])+","+str(self.fromSpot[1])+" "+str(self.toSpot[0])+","+str(self.toSpot[1])
         
         

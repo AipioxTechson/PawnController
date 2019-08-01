@@ -57,7 +57,7 @@ while playAgain:
         player2 = HumanPlayer(Token2,p2_pieces,grid,2)
     elif gamemode == 2:
         player1 = HumanPlayer(Token1,p1_pieces,grid,1)
-        player2 = ComputerPlayer(Token2,p2_pieces,grid,2,"Addition")
+        player2 = ComputerPlayer(Token2,p2_pieces,grid,2,"Subtraction")
     else:
         player1 = ComputerPlayer(Token1,p1_pieces,grid,1,"Addition")
         player2 = ComputerPlayer(Token2,p2_pieces,grid,2,"Subtraction")
