@@ -23,7 +23,7 @@ def generateGrid(size,player_one_t,player_two_t):
 
 
 
-total,gamemode, playAgain = 0,0, True
+total,gamemode, playAgain, C1Mode,C2Mode = 0,0, True, None, None
 player1, player2, player1Score, player2Score = None, None, 0,0
 Token1, Token2 = "X", "Y"
 
@@ -47,7 +47,15 @@ except ValueError:
 if gamemode < 0 or gamemode > 3:
     gamemode = 1
     
-
+if gamemode ==2 or gamemode == 3:
+    C1Mode = input("What ComputerPlayer1 Mode? Addition, Subtraction, Mixed\n")
+    if C1Mode != "Addition" and C1Mode != "Subtraction" and C1Mode !="Mixed":
+        C1Mode = "Addition"
+if gamemode == 3:
+    
+    C2Mode = input("What ComputerPlayer2 Mode? Addition, Subtraction, Mixed\n")
+    if C2Mode != "Addition" and C2Mode != "Subtraction" and C2Mode !="Mixed":
+        C2Mode = "Subtraction"    
 while playAgain:
     grid,p1_pieces,p2_pieces = generateGrid(total,Token1,Token2)
     
@@ -57,10 +65,10 @@ while playAgain:
         player2 = HumanPlayer(Token2,p2_pieces,grid,2)
     elif gamemode == 2:
         player1 = HumanPlayer(Token1,p1_pieces,grid,1)
-        player2 = ComputerPlayer(Token2,p2_pieces,grid,2,"Subtraction")
+        player2 = ComputerPlayer(Token2,p2_pieces,grid,2,C1Mode)
     else:
-        player1 = ComputerPlayer(Token1,p1_pieces,grid,1,"Addition")
-        player2 = ComputerPlayer(Token2,p2_pieces,grid,2,"Subtraction")
+        player1 = ComputerPlayer(Token1,p1_pieces,grid,1,C1Mode)
+        player2 = ComputerPlayer(Token2,p2_pieces,grid,2,C2Mode)
         
     #Main Game
     CurrentGame = Game(player1,player2,grid)

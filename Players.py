@@ -249,8 +249,16 @@ class ComputerPlayer(Player):
             CurrentState = self.generateDefaultState(turnNumber)
         
         self.previousState = CurrentState
-        CurrentMove = CurrentState.getMove()
-        self.previousMove = CurrentMove
+        if CurrentState.Movelist == []:
+            #No matter what the Ai does, it will always lose.
+            randomList = []
+            for pieces in self.getPieces():
+                randomList += self.getAvailableMoves(pieces)
+            CurrentMove = random.choice(randomList)
+            self.previousMove = None
+        else:
+            CurrentMove = CurrentState.getMove()
+            self.previousMove = CurrentMove
         return CurrentMove, self
          
     def getState(self,turnNumber):
@@ -273,10 +281,12 @@ class ComputerPlayer(Player):
         return currentGrid
     
     def AddMove(self,State,Move):
-        State.AddMove(Move)
+        if Move != None:
+            State.AddMove(Move)
     
     def RemoveMove(self,State,Move):
-        State.RemoveMove(Move)
+        if Move != None:
+            State.RemoveMove(Move)
     
     def generateDefaultState(self,turnNumber):
         currentST = State(self.copyGrid(self.grid))

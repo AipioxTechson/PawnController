@@ -133,6 +133,8 @@ class Move:
         self.toSpot = toSpot
         
     def __eq__(self,other):
+        if other == None:
+            return False
         return self.fromSpot == other.fromSpot and self.toSpot == other.toSpot
     
     def __str__(self):
